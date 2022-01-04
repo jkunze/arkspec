@@ -1040,11 +1040,11 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">ARK</td>
-<td class="right">December 2021</td>
+<td class="right">January 2022</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Kunze &amp; Bermès</td>
-<td class="center">Expires 16 June 2022</td>
+<td class="center">Expires 8 July 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1057,12 +1057,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-kunze-ark-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2021-12-13" class="published">13 December 2021</time>
+<time datetime="2022-01-04" class="published">4 January 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-06-16">16 June 2022</time></dd>
+<dd class="expires"><time datetime="2022-07-08">8 July 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1106,6 +1106,17 @@ is both human- and machine-readable. The returned record contains core
 metadata and a commitment statement from the current provider.
 Tools exist for minting, binding, and resolving ARKs.<a href="#section-abstract-3" class="pilcrow">¶</a></p>
 </section>
+<section class="note" id="section-note.1">
+      <h2 id="name-transitional-draft">
+<a href="#name-transitional-draft" class="section-name selfRef">Transitional Draft</a>
+      </h2>
+<p id="section-note.1-1">
+This is a transitional draft. The ARK Alliance Technical Working
+Group (https://wiki.lyrasis.org/display/ARKs/Technical+Working+Group) is in
+the process of revising the ARK spec via a series of Internet-Drafts.
+While the spec is in transition, new implementors should follow
+https://datatracker.ietf.org/doc/html/draft-kunze-ark-18.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
+</section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">
         <h2 id="name-status-of-this-memo">
@@ -1125,7 +1136,7 @@ Tools exist for minting, binding, and resolving ARKs.<a href="#section-abstract-
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 16 June 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 8 July 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1134,7 +1145,7 @@ Tools exist for minting, binding, and resolving ARKs.<a href="#section-abstract-
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2021 IETF Trust and the persons identified as the
+            Copyright (c) 2022 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1142,7 +1153,10 @@ Tools exist for minting, binding, and resolving ARKs.<a href="#section-abstract-
             (<span><a href="https://trustee.ietf.org/license-info">https://trustee.ietf.org/license-info</a></span>) in effect on the date of
             publication of this document. Please review these documents
             carefully, as they describe your rights and restrictions with
-            respect to this document.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
+            respect to this document. Code Components extracted from this
+            document must include Revised BSD License text as described in
+            Section 4.e of the Trust Legal Provisions and are provided without
+            warranty as described in the Revised BSD License.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="toc">
@@ -1296,13 +1310,6 @@ Tools exist for minting, binding, and resolving ARKs.<a href="#section-abstract-
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
 <p id="section-1-1">
-[ Note about this transitional draft. The ARK Alliance Technical Working
-Group (https://wiki.lyrasis.org/display/ARKs/Technical+Working+Group) is in
-the process of revising the ARK spec via a series of Internet-Drafts.
-While the spec is in transition, new implementors should follow
-https://datatracker.ietf.org/doc/html/draft-kunze-ark-18.
-]<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">
 This document describes a scheme for the high-quality naming of
 information resources.  The scheme, called the Archival Resource
 Key (ARK), is well suited to long-term access and identification
@@ -1314,8 +1321,8 @@ vocabulary terms, performances).  Hereafter the term "object" refers
 to an information resource.  The term ARK itself refers both to the
 scheme and to any single identifier that conforms to it.  A reasonably
 concise and accessible overview and rationale for the scheme is
-available at <span>[<a href="#ARK" class="xref">ARK</a>]</span>.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">
+available at <span>[<a href="#ARK" class="xref">ARK</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">
 Schemes for persistent identification of network-accessible objects
 are not new.  In the early 1990's, the design of the Uniform Resource
 Name <span>[<a href="#RFC2141" class="xref">RFC2141</a>]</span> responded to the observed failure rate of URLs by
@@ -1326,8 +1333,8 @@ a community of providers around a mature software system <span>[<a href="#Handle
 management.  The Persistent Uniform Resource Locator <span>[<a href="#PURL" class="xref">PURL</a>]</span> was another
 scheme that had the advantage of working with unmodified web
 browsers.  ARKs represent an approach that attempts to build on
-the strengths and to avoid the weaknesses of these schemes.<a href="#section-1-3" class="pilcrow">¶</a></p>
-<p id="section-1-4">
+the strengths and to avoid the weaknesses of these schemes.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3">
 A founding principle of the ARK is that persistence is purely a matter
 of service.  Persistence is neither inherent in an object nor conferred
 on it by a particular naming syntax.  Nor is the technique of name
@@ -1344,8 +1351,8 @@ naming schemes.  That indirection has always been a native part of the web
 while being so lightly utilized for the persistence of web-based objects
 indicates how unsuited most organizations will probably be to the task of
 table maintenance and to the much more fundamental challenge of keeping
-the objects themselves viable.<a href="#section-1-4" class="pilcrow">¶</a></p>
-<p id="section-1-5">
+the objects themselves viable.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-4">
 Persistence is achieved
 through a provider's successful stewardship of objects and their
 identifiers.  The highest level of persistence will be reinforced by a
@@ -1361,7 +1368,7 @@ proprietary and all of which increase the carry-forward burden for
 the preservation community.  It is for this reason that the ARK scheme
 relies only on educated name assignment and light use of general-purpose
 infrastructures that are maintained mostly by the Internet community at
-large (the DNS, web servers, and web browsers).<a href="#section-1-5" class="pilcrow">¶</a></p>
+large (the DNS, web servers, and web browsers).<a href="#section-1-4" class="pilcrow">¶</a></p>
 <section id="section-1.1">
         <h3 id="name-reasons-to-use-arks">
 <a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-reasons-to-use-arks" class="section-name selfRef">Reasons to Use ARKs</a>
@@ -2323,7 +2330,7 @@ resolution involves a chain (sequence) of indirection (forwarding), and
 possibly proxying.<a href="#section-2.8-1" class="pilcrow">¶</a></p>
 <p id="section-2.8-2">
 On the web, forwarding is done with HTTP redirects. In general ARK resolution
-on the web involves a chain of one or more redirects that ends when a web 
+on the web involves a chain of one or more redirects that ends when a web
 server in the chain responds without redirecting. That final web server is
 known as the "responder". The "responder" server might actually be a proxy that
 constructs its response by first intiating a separate resolution process
@@ -3189,7 +3196,8 @@ objects.<a href="#section-5.6-2" class="pilcrow">¶</a></p>
 <dt id="NAANrequest">[NAANrequest]</dt>
       <dd>
 <span class="refAuthor">ARKs.org</span>, <span class="refTitle">"NAAN Request Form"</span>, <time datetime="2018" class="refDate">2018</time>, <span>&lt;<a href="https://n2t.net/e/naan_request">https://n2t.net/e/naan_request</a>&gt;</span>. </dd>
-<dd class="break"></dd><dt id="NLMPerm">[NLMPerm]</dt>
+<dd class="break"></dd>
+<dt id="NLMPerm">[NLMPerm]</dt>
       <dd>
 <span class="refAuthor">Byrnes, M.</span>, <span class="refTitle">"Permanence Levels and the Archives for NLM's Permanent Web Documents"</span>, <time datetime="2005-03" class="refDate">March 2005</time>, <span>&lt;<a href="https://www.nlm.nih.gov/pubs/techbull/ma05/ma05_archive.html">https://www.nlm.nih.gov/pubs/techbull/ma05/ma05_archive.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
@@ -3200,45 +3208,56 @@ objects.<a href="#section-5.6-2" class="pilcrow">¶</a></p>
 <dt id="PStatements">[PStatements]</dt>
       <dd>
 <span class="refAuthor">Kunze, J.</span>, <span class="refTitle">"Persistence statements: describing digital stickiness"</span>, <time datetime="2016-10" class="refDate">October 2016</time>, <span>&lt;<a href="https://n2t.net/ark:/13030/c7833mx7t">https://n2t.net/ark:/13030/c7833mx7t</a>&gt;</span>. </dd>
-<dd class="break"></dd><dt id="PURL">[PURL]</dt>
+<dd class="break"></dd>
+<dt id="PURL">[PURL]</dt>
       <dd>
 <span class="refAuthor">Shafer, K.</span>, <span class="refTitle">"Introduction to Persistent Uniform Resource Locators"</span>, <time datetime="1996" class="refDate">1996</time>, <span>&lt;<a href="https://www.internetsociety.org/inet96/proceedings/a4/a4_1.htm">https://www.internetsociety.org/inet96/proceedings/a4/a4_1.htm</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC0854">[RFC0854]</dt>
+      <dd>
+<span class="refAuthor">Postel, J.</span> and <span class="refAuthor">J. Reynolds</span>, <span class="refTitle">"Telnet Protocol Specification"</span>, <span class="seriesInfo">STD 8</span>, <span class="seriesInfo">RFC 854</span>, <span class="seriesInfo">DOI 10.17487/RFC0854</span>, <time datetime="1983-05" class="refDate">May 1983</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc854">https://www.rfc-editor.org/info/rfc854</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC1034">[RFC1034]</dt>
+      <dd>
+<span class="refAuthor">Mockapetris, P.</span>, <span class="refTitle">"Domain names - concepts and facilities"</span>, <span class="seriesInfo">STD 13</span>, <span class="seriesInfo">RFC 1034</span>, <span class="seriesInfo">DOI 10.17487/RFC1034</span>, <time datetime="1987-11" class="refDate">November 1987</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1034">https://www.rfc-editor.org/info/rfc1034</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2141">[RFC2141]</dt>
+      <dd>
+<span class="refAuthor">Moats, R.</span>, <span class="refTitle">"URN Syntax"</span>, <span class="seriesInfo">RFC 2141</span>, <span class="seriesInfo">DOI 10.17487/RFC2141</span>, <time datetime="1997-05" class="refDate">May 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2141">https://www.rfc-editor.org/info/rfc2141</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2288">[RFC2288]</dt>
+      <dd>
+<span class="refAuthor">Lynch, C.</span>, <span class="refAuthor">Preston, C.</span>, and <span class="refAuthor">R. Daniel</span>, <span class="refTitle">"Using Existing Bibliographic Identifiers as Uniform Resource Names"</span>, <span class="seriesInfo">RFC 2288</span>, <span class="seriesInfo">DOI 10.17487/RFC2288</span>, <time datetime="1998-02" class="refDate">February 1998</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2288">https://www.rfc-editor.org/info/rfc2288</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2611">[RFC2611]</dt>
+      <dd>
+<span class="refAuthor">Daigle, L.</span>, <span class="refAuthor">van Gulik, D.</span>, <span class="refAuthor">Iannella, R.</span>, and <span class="refAuthor">P. Faltstrom</span>, <span class="refTitle">"URN Namespace Definition Mechanisms"</span>, <span class="seriesInfo">BCP 33</span>, <span class="seriesInfo">RFC 2611</span>, <span class="seriesInfo">DOI 10.17487/RFC2611</span>, <time datetime="1999-06" class="refDate">June 1999</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2611">https://www.rfc-editor.org/info/rfc2611</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2616">[RFC2616]</dt>
+      <dd>
+<span class="refAuthor">Fielding, R.</span>, <span class="refAuthor">Gettys, J.</span>, <span class="refAuthor">Mogul, J.</span>, <span class="refAuthor">Frystyk, H.</span>, <span class="refAuthor">Masinter, L.</span>, <span class="refAuthor">Leach, P.</span>, and <span class="refAuthor">T. Berners-Lee</span>, <span class="refTitle">"Hypertext Transfer Protocol -- HTTP/1.1"</span>, <span class="seriesInfo">RFC 2616</span>, <span class="seriesInfo">DOI 10.17487/RFC2616</span>, <time datetime="1999-06" class="refDate">June 1999</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2616">https://www.rfc-editor.org/info/rfc2616</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2822">[RFC2822]</dt>
+      <dd>
+<span class="refAuthor">Resnick, P., Ed.</span>, <span class="refTitle">"Internet Message Format"</span>, <span class="seriesInfo">RFC 2822</span>, <span class="seriesInfo">DOI 10.17487/RFC2822</span>, <time datetime="2001-04" class="refDate">April 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2822">https://www.rfc-editor.org/info/rfc2822</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2915">[RFC2915]</dt>
+      <dd>
+<span class="refAuthor">Mealling, M.</span> and <span class="refAuthor">R. Daniel</span>, <span class="refTitle">"The Naming Authority Pointer (NAPTR) DNS Resource Record"</span>, <span class="seriesInfo">RFC 2915</span>, <span class="seriesInfo">DOI 10.17487/RFC2915</span>, <time datetime="2000-09" class="refDate">September 2000</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2915">https://www.rfc-editor.org/info/rfc2915</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3986">[RFC3986]</dt>
+      <dd>
+<span class="refAuthor">Berners-Lee, T.</span>, <span class="refAuthor">Fielding, R.</span>, and <span class="refAuthor">L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <span class="seriesInfo">DOI 10.17487/RFC3986</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3986">https://www.rfc-editor.org/info/rfc3986</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5013">[RFC5013]</dt>
+      <dd>
+<span class="refAuthor">Kunze, J.</span> and <span class="refAuthor">T. Baker</span>, <span class="refTitle">"The Dublin Core Metadata Element Set"</span>, <span class="seriesInfo">RFC 5013</span>, <span class="seriesInfo">DOI 10.17487/RFC5013</span>, <time datetime="2007-08" class="refDate">August 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5013">https://www.rfc-editor.org/info/rfc5013</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="shoulderrequest">[shoulderrequest]</dt>
       <dd>
 <span class="refAuthor">ARKs.org</span>, <span class="refTitle">"Shoulder Request Form"</span>, <time datetime="2021" class="refDate">2021</time>, <span>&lt;<a href="https://n2t.net/e/shoulder_request">https://n2t.net/e/shoulder_request</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC0854">[RFC0854]</dt>
-      <dd>
-<span class="refAuthor">Postel, J.</span> and <span class="refAuthor">J. Reynolds</span>, <span class="refTitle">"Telnet Protocol Specification"</span>, <span class="seriesInfo">STD 8</span>, <span class="seriesInfo">RFC 854</span>, <span class="seriesInfo">DOI 10.17487/RFC0854</span>, <time datetime="1983-05" class="refDate">May 1983</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc854">https://www.rfc-editor.org/info/rfc854</a>&gt;</span>. </dd>
-<dd class="break"></dd><dt id="RFC1034">[RFC1034]</dt>
-      <dd>
-<span class="refAuthor">Mockapetris, P.</span>, <span class="refTitle">"Domain names - concepts and facilities"</span>, <span class="seriesInfo">STD 13</span>, <span class="seriesInfo">RFC 1034</span>, <span class="seriesInfo">DOI 10.17487/RFC1034</span>, <time datetime="1987-11" class="refDate">November 1987</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1034">https://www.rfc-editor.org/info/rfc1034</a>&gt;</span>. </dd>
-<dd class="break"></dd><dt id="RFC2141">[RFC2141]</dt>
-      <dd>
-<span class="refAuthor">Moats, R.</span>, <span class="refTitle">"URN Syntax"</span>, <span class="seriesInfo">RFC 2141</span>, <span class="seriesInfo">DOI 10.17487/RFC2141</span>, <time datetime="1997-05" class="refDate">May 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2141">https://www.rfc-editor.org/info/rfc2141</a>&gt;</span>. </dd>
-<dd class="break"></dd><dt id="RFC2288">[RFC2288]</dt>
-      <dd>
-<span class="refAuthor">Lynch, C.</span>, <span class="refAuthor">Preston, C.</span>, and <span class="refAuthor">R. Daniel</span>, <span class="refTitle">"Using Existing Bibliographic Identifiers as Uniform Resource Names"</span>, <span class="seriesInfo">RFC 2288</span>, <span class="seriesInfo">DOI 10.17487/RFC2288</span>, <time datetime="1998-02" class="refDate">February 1998</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2288">https://www.rfc-editor.org/info/rfc2288</a>&gt;</span>. </dd>
-<dd class="break"></dd><dt id="RFC2611">[RFC2611]</dt>
-      <dd>
-<span class="refAuthor">Daigle, L.</span>, <span class="refAuthor">van Gulik, D.</span>, <span class="refAuthor">Iannella, R.</span>, and <span class="refAuthor">P. Faltstrom</span>, <span class="refTitle">"URN Namespace Definition Mechanisms"</span>, <span class="seriesInfo">BCP 33</span>, <span class="seriesInfo">RFC 2611</span>, <span class="seriesInfo">DOI 10.17487/RFC2611</span>, <time datetime="1999-06" class="refDate">June 1999</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2611">https://www.rfc-editor.org/info/rfc2611</a>&gt;</span>. </dd>
-<dd class="break"></dd><dt id="RFC2616">[RFC2616]</dt>
-      <dd>
-<span class="refAuthor">Fielding, R.</span>, <span class="refAuthor">Gettys, J.</span>, <span class="refAuthor">Mogul, J.</span>, <span class="refAuthor">Frystyk, H.</span>, <span class="refAuthor">Masinter, L.</span>, <span class="refAuthor">Leach, P.</span>, and <span class="refAuthor">T. Berners-Lee</span>, <span class="refTitle">"Hypertext Transfer Protocol -- HTTP/1.1"</span>, <span class="seriesInfo">RFC 2616</span>, <span class="seriesInfo">DOI 10.17487/RFC2616</span>, <time datetime="1999-06" class="refDate">June 1999</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2616">https://www.rfc-editor.org/info/rfc2616</a>&gt;</span>. </dd>
-<dd class="break"></dd><dt id="RFC2822">[RFC2822]</dt>
-      <dd>
-<span class="refAuthor">Resnick, P., Ed.</span>, <span class="refTitle">"Internet Message Format"</span>, <span class="seriesInfo">RFC 2822</span>, <span class="seriesInfo">DOI 10.17487/RFC2822</span>, <time datetime="2001-04" class="refDate">April 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2822">https://www.rfc-editor.org/info/rfc2822</a>&gt;</span>. </dd>
-<dd class="break"></dd><dt id="RFC2915">[RFC2915]</dt>
-      <dd>
-<span class="refAuthor">Mealling, M.</span> and <span class="refAuthor">R. Daniel</span>, <span class="refTitle">"The Naming Authority Pointer (NAPTR) DNS Resource Record"</span>, <span class="seriesInfo">RFC 2915</span>, <span class="seriesInfo">DOI 10.17487/RFC2915</span>, <time datetime="2000-09" class="refDate">September 2000</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2915">https://www.rfc-editor.org/info/rfc2915</a>&gt;</span>. </dd>
-<dd class="break"></dd><dt id="RFC3986">[RFC3986]</dt>
-      <dd>
-<span class="refAuthor">Berners-Lee, T.</span>, <span class="refAuthor">Fielding, R.</span>, and <span class="refAuthor">L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <span class="seriesInfo">DOI 10.17487/RFC3986</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3986">https://www.rfc-editor.org/info/rfc3986</a>&gt;</span>. </dd>
-<dd class="break"></dd><dt id="RFC5013">[RFC5013]</dt>
-      <dd>
-<span class="refAuthor">Kunze, J.</span> and <span class="refAuthor">T. Baker</span>, <span class="refTitle">"The Dublin Core Metadata Element Set"</span>, <span class="seriesInfo">RFC 5013</span>, <span class="seriesInfo">DOI 10.17487/RFC5013</span>, <time datetime="2007-08" class="refDate">August 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5013">https://www.rfc-editor.org/info/rfc5013</a>&gt;</span>. </dd>
-<dd class="break"></dd><dt id="THUMP">[THUMP]</dt>
+<dt id="THUMP">[THUMP]</dt>
     <dd>
 <span class="refAuthor">Gamiel, K.</span> and <span class="refAuthor">J. Kunze</span>, <span class="refTitle">"The HTTP URL Mapping Protocol"</span>, <time datetime="2007-08" class="refDate">August 2007</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-kunze-thump-03.txt">https://www.ietf.org/archive/id/draft-kunze-thump-03.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
