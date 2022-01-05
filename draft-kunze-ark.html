@@ -1044,7 +1044,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Kunze &amp; Bermès</td>
-<td class="center">Expires 8 July 2022</td>
+<td class="center">Expires 9 July 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1057,12 +1057,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-kunze-ark-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-01-04" class="published">4 January 2022</time>
+<time datetime="2022-01-05" class="published">5 January 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-07-08">8 July 2022</time></dd>
+<dd class="expires"><time datetime="2022-07-09">9 July 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1136,7 +1136,7 @@ https://datatracker.ietf.org/doc/html/draft-kunze-ark-18.<a href="#section-note.
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 8 July 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 9 July 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1220,7 +1220,7 @@ https://datatracker.ietf.org/doc/html/draft-kunze-ark-18.<a href="#section-note.
                 <p id="section-toc.1-1.2.2.7.1"><a href="#section-2.7" class="xref">2.7</a>.  <a href="#name-normalization-and-lexical-e" class="xref">Normalization and Lexical Equivalence</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.8">
-                <p id="section-toc.1-1.2.2.8.1"><a href="#section-2.8" class="xref">2.8</a>.  <a href="#name-resolver-chains" class="xref">Resolver Chains</a></p>
+                <p id="section-toc.1-1.2.2.8.1"><a href="#section-2.8" class="xref">2.8</a>.  <a href="#name-resolver-chains-and-roles" class="xref">Resolver Chains and Roles</a></p>
 </li>
             </ul>
 </li>
@@ -2315,34 +2315,53 @@ Finally, no %-encoded character should ever appear in an ARK in its
 decoded form.<a href="#section-2.7-5" class="pilcrow">¶</a></p>
 </section>
 <section id="section-2.8">
-        <h3 id="name-resolver-chains">
-<a href="#section-2.8" class="section-number selfRef">2.8. </a><a href="#name-resolver-chains" class="section-name selfRef">Resolver Chains</a>
+        <h3 id="name-resolver-chains-and-roles">
+<a href="#section-2.8" class="section-number selfRef">2.8. </a><a href="#name-resolver-chains-and-roles" class="section-name selfRef">Resolver Chains and Roles</a>
         </h3>
 <p id="section-2.8-1">
-There are certain terms used to talk about ARK resolution as described in this
-section. Resolution itself is seen as a computation, consisting of one or more
-stages, that maps a client identifier to some response. The response may take
-on a variety of forms consistent with modern networked information retrieval,
-including the return of a landing page, a metadata record, or a web-based 404
-Not Found message. A minimal form of ARK resolution is a single-stage, direct
-return of a web page without any indirection. Typically, however, ARK
-resolution involves a chain (sequence) of indirection (forwarding), and
-possibly proxying.<a href="#section-2.8-1" class="pilcrow">¶</a></p>
+To resolve a Compact ARK (ie, an ARK beginning "ark:") it must initially
+be promoted to a Mapping ARK so that it becomes actionable.
+
+On the web, this means finding a suitable web Resolver Service to prepend
+to the compact form of the identifier in order to convert it to a URL (cf
+<span>[<a href="#CURIE" class="xref">CURIE</a>]</span>).
+(This is more or less true for any type of identifier not already in
+URL form.)<a href="#section-2.8-1" class="pilcrow">¶</a></p>
 <p id="section-2.8-2">
-On the web, forwarding is done with HTTP redirects. In general ARK resolution
-on the web involves a chain of one or more redirects that ends when a web
-server in the chain responds without redirecting. That final web server is
-known as the "responder". The "responder" server might actually be a proxy that
-constructs its response by first intiating a separate resolution process
-(whether using web protocols or not) unbeknownst to the original client, but
-any such process is invisible to the original client and out of scope for this
-discussion. There may be "resource responder" server for resource requests and
-a different "metadata responder" for metadata requests. ARK resolution starts
-when a client contacts the NMA (server host) found in the original Mapping ARK
-URL. The NMA that is contacted to start things off is known as the "first
-resolver". For example, Mapping for ARKs publicized with the hostname N2T.net,
-that host will be the first resolver. N2T.net redirects to a second resolver,
-such as ark.bnf.fr, but the latter is usually the first resolver for BnF ARKs.<a href="#section-2.8-2" class="pilcrow">¶</a></p>
+The identifier's Resolver Service is the first point of contact in
+the resolution process (eg, the NMA in a typical URL). It can be seen as
+the "first resolver" because resolution may involve multiple redirections via a
+chain of resolvers before a resolution response is returned by the last
+resolver (the "responder"). The chain is as long as the number of redirections.
+In particular, when the first resolver is also the last resolver, the chain has
+zero length. Most ARKs using N2T.net as the first resolver will be redirected
+to a second resolver listed in the record for a given ARK's NAAN. For example,
+ARKs bearing the 12148 NAAN (BnF) and the n2t.net NMA (first resolver) might be
+redirected to a second resolver, ark.bnf.fr. Whether n2t.net or ark.bnf.fr
+will be the first resolver depends on what NMA is appears in the ARK at
+the time of resolution. Normally, BnF ARKs are published with the BnF NMA
+(ark.bnf.fr), so most BnF ARKs will not start with n2t.net.<a href="#section-2.8-2" class="pilcrow">¶</a></p>
+<p id="section-2.8-3">
+Resolution in general can be seen as a multi-stage computation that maps
+a client identifier to some sort of response. On the web, each resolver in the
+chain is an HTTP server; even if the "responder" (last resolver) is a proxy
+server that intiates a non-web sub-resolution process, that is invisible to the
+original client and out of scope for this discussion.
+A web resolution response may take on a variety of forms, including the return
+of a landing page, or a metadata record, or a web-based 404 Not Found message.
+A given response, as well as the specific chain of resolvers traversed, depends
+not only on the identifier, but also on such things as the time, location,
+credentials, and technical platform of the client initiating resolution.<a href="#section-2.8-3" class="pilcrow">¶</a></p>
+<p id="section-2.8-4">
+Also, for a given identifier, the "responder" (last resolver) for an object
+request may be different from the responder for a metadata request. While
+maintenance of objects and their metadata are often co-located in one
+organization, for technical reasons it is not uncommon that requests for
+objects and metadata are forwarded to different responders. To add credibility
+to a persistence promise, it can be useful to maintain a secondary copy of
+object metadata at an external and publicly visible resolver. For example,
+N2T.net was originally designed to store a secondary copy of metadata for many
+millions of identifiers.<a href="#section-2.8-4" class="pilcrow">¶</a></p>
 </section>
 </section>
 <section id="section-3">
@@ -3164,6 +3183,10 @@ objects.<a href="#section-5.6-2" class="pilcrow">¶</a></p>
 <dt id="ARKspecs">[ARKspecs]</dt>
       <dd>
 <span class="refAuthor">Alliance, A.</span>, <span class="refTitle">"ARK Maintenance Agency Specifications"</span>, <time datetime="2021" class="refDate">2021</time>, <span>&lt;<a href="https://arks.org/specs/">https://arks.org/specs/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="CURIE">[CURIE]</dt>
+      <dd>
+<span class="refAuthor">Note, W. W. G.</span>, <span class="refTitle">"CURIE Syntax 1.0"</span>, <time datetime="2010-12" class="refDate">December 2010</time>, <span>&lt;<a href="https://www.w3.org/TR/2010/NOTE-curie-20101216/">https://www.w3.org/TR/2010/NOTE-curie-20101216/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="DCKernel">[DCKernel]</dt>
       <dd>
