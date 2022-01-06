@@ -5,8 +5,8 @@
 Network Working Group                                           J. Kunze
 Internet-Draft                                California Digital Library
 Intended status: Informational                                 E. Bermès
-Expires: 9 July 2022                    Bibliothèque nationale de France
-                                                          5 January 2022
+Expires: 10 July 2022                   Bibliothèque nationale de France
+                                                          6 January 2022
 
 
                        The ARK Identifier Scheme
@@ -63,7 +63,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 July 2022.
+   This Internet-Draft will expire on 10 July 2022.
 
 Copyright Notice
 
@@ -106,8 +106,7 @@ Table of Contents
      3.5.  Assigners of ARKs
      3.6.  NAAN Namespace Management
      3.7.  Sub-Object Naming
-   4.  Finding a Name Mapping Authority
-     4.1.  Looking Up NMAs in a Globally Accessible File
+   4.  Finding a Resolver Service
    5.  Generic ARK Service Definition
      5.1.  Generic ARK Access Service (access, location)
        5.1.1.  Generic Policy Service (permanence, naming, etc.)
@@ -1334,40 +1333,45 @@ Table of Contents
    future registry of canonical service points (e.g., numeric references
    to versions, formats, languages, etc).
 
-4.  Finding a Name Mapping Authority
+4.  Finding a Resolver Service
 
    In order to derive an actionable identifier (these days, a URL) from
-   an ARK, a hostname (or hostname plus port combination) for a working
-   Name Mapping Authority (NMA) must be found.  An NMA is a service that
-   is able to respond to basic ARK service requests.  Relying on
-   registration and client-side discovery, NMAs make known which NAAs'
-   identifiers they are willing to service.
+   an ARK, a Resolver Service must be found.  The Resolver Service
+   consists of an NMA (host or host/port combination), optionally
+   followed by URI-type path components, all ending in a '/'.  This is a
+   service that is able to respond to basic ARK service requests.
+   Relying on registration and client-side discovery, NMAs make known
+   which NAAs' identifiers they are willing to service.
 
-   Upon encountering an ARK, a user (or client software) looks inside it
-   for the optional NMA part (usually the host part of the NMA's ARK
-   service).  If it contains an NMA that is working, this NMA discovery
-   step may be skipped; the NMA effectively uses the beginning of an ARK
-   to cache the results of a prior mapping authority discovery process.
-   If a new NMA needs to be found, the client looks inside the ARK again
-   for the NAAN (Name Assigning Authority Number).  Querying a global
-   database, it then uses the NAAN to look up all current NMAs that
-   service ARKs issued by the identified NAA.
+   Upon encountering an ARK, a user (or client software) determines if
+   it is a Mapping ARK (ie, it is a URL beginning with a Resolver
+   Service).  If the Resolver Service is working, this discovery step
+   likely can be skipped assuming the URL correctly identifies a working
+   resolver.  If a new Resolver Service needs to be found, the client
+   looks inside the ARK again for the NAAN (Name Assigning Authority
+   Number).  Querying a global database, it then uses the NAAN to look
+   up all current Resolver Services that service ARKs issued by the
+   identified NAA.
 
    The global database is key, and ideally the lookup would be automatic
-   and transparent to the user.  For this, the current most promising
-   method is the Name-to-Thing (N2T) Resolver [N2T] at n2t.net.  It is a
-   reliable, low-cost NMA supported by the ARK Alliance that primarily
-   exists to support actionable HTTP-based URLs for as long as HTTP is
-   used.  One of its big advantages over the other two methods and the
-   URN, Handle, DOI, and PURL methods, is that N2T addresses the
-   namespace splitting problem.  When objects maintained by one NMA are
-   inherited by more than one successor NMA, until now one of those
-   successors would be required to maintain forwarding tables on behalf
-   of the other successors.
+   and transparent to the user.  For this, the current mainstream method
+   is the Name-to-Thing (N2T) Resolver [N2T] at n2t.net.  It is based on
+   a plain text file database containing explanatory comments, so it can
+   also be directly inspected by users, for example, to manually find a
+   Resolver Service.  N2T is a reliable, low-cost Resolver Service
+   supported by the ARK Alliance that primarily exists to support
+   actionable HTTP-based URLs for as long as HTTP is used.  One of its
+   big advantages over the other two methods and the URN, Handle, DOI,
+   and PURL methods, is that N2T can address the namespace splitting
+   problem because it has the option of storing redirection information
+   for individual identifiers rather than just at the name assigning
+   authority level.  When objects maintained by one NMA are inherited by
+   more than one successor NMA, this avoids requiring one of those
+   successors to maintain forwarding tables on behalf of the other
+   successors.
 
-   There are two other ways to discover an NMA, one of them described in
-   a subsection below.  Another way, described in an appendix, is based
-   on a simplification of the URN resolver discovery method, itself very
+   An appendix describes an historical way to discover an NMA based on a
+   simplification of the URN resolver discovery method, itself very
    similar in principle to the resolver discovery method used by Handles
    and DOIs.  None of these methods does more than what can be done with
    a very small, consortially maintained web server such as [N2T].
@@ -1384,22 +1388,22 @@ Table of Contents
    prepared to service it.  That NMA may or may not be administered by
    the Name Assigning Authority (NAA) that created it.  Consider the
    following hypothetical example of providing long-term access to a
-   cancer research journal.  The publisher wishes to turn a profit and
-   the National Library of Medicine wishes to preserve the scholarly
-   record.  An agreement might be struck whereby the publisher would act
-   as the NAA and the national library would archive the journal issue
-   when it appears, but without providing direct access for the first
-   six months.  During the first six months of peak commercial
-   viability, the publisher would retain exclusive delivery rights and
-   would charge access fees.  Again, by agreement, both the library and
-   the publisher would act as NMAs, but during that initial period the
-   library would redirect requests for issues less than six months old
-   to the publisher.  At the end of the waiting period, the library
-   would then begin servicing requests for issues older than six months
-   by tapping directly into its own archives.  Meanwhile, the publisher
-   might routinely redirect incoming requests for older issues to the
-   library.  Long-term access is thereby preserved, and so is the
-   commercial incentive to publish content.
+   cancer research journal.  The publisher wishes to turn a profit and a
+   national library wishes to preserve the scholarly record.  An
+   agreement might be struck whereby the publisher would act as the NAA
+   and the national library would archive the journal issue when it
+   appears, but without providing direct access for the first six
+   months.  During the first six months of peak commercial viability,
+   the publisher would retain exclusive delivery rights and would charge
+   access fees.  Again, by agreement, both the library and the publisher
+   would act as NMAs, but during that initial period the library would
+   redirect requests for issues less than six months old to the
+   publisher.  At the end of the waiting period, the library would then
+   begin servicing requests for issues older than six months by tapping
+   directly into its own archives.  Meanwhile, the publisher might
+   routinely redirect incoming requests for older issues to the library.
+   Long-term access is thereby preserved, and so is the commercial
+   incentive to publish content.
 
    Although it will be common for an NAA also to run an NMA service, it
    is never a requirement.  Over time NAAs and NMAs will come and go.
@@ -1407,26 +1411,6 @@ Table of Contents
    the same ARKs simultaneously (e.g., as mirrors or as competitors).
    There might also be asymmetric but coordinated NMAs as in the
    library-publisher example above.
-
-4.1.  Looking Up NMAs in a Globally Accessible File
-
-   This subsection describes a way to look up NMAs using a simple name
-   authority table represented as a plain text file.  For efficient
-   access the file may be stored in a local filesystem, but it needs to
-   be reloaded periodically to incorporate updates.  It is not expected
-   that the size of the file or frequency of update should impose an
-   undue maintenance or searching burden any time soon, for even
-   primitive linear search of a file with ten-thousand NAAs is a
-   subsecond operation on modern server machines.  The proposed file
-   strategy is similar to the /etc/hosts file strategy that supported
-   Internet host address lookup for a period of years before the advent
-   of DNS.
-
-   The name authority table file is updated on an ongoing basis and is
-   available for copying over the Internet from a number of mirror sites
-   [NAANregistry].  The file contains comment lines (lines that begin
-   with '#') explaining the format and giving the file's modification
-   time, reloading address, and NAA registration instructions.
 
 5.  Generic ARK Service Definition
 
@@ -2080,7 +2064,7 @@ Authors' Addresses
    Oakland, CA 94607
    United States of America
 
-   Email: jak@ucop.edu
+   Email: jakkbl@gmail.com
 
 
    Emmanuelle Bermès
