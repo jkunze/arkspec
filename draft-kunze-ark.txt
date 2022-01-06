@@ -1356,19 +1356,19 @@ Table of Contents
    The global database is key, and ideally the lookup would be automatic
    and transparent to the user.  For this, the current mainstream method
    is the Name-to-Thing (N2T) Resolver [N2T] at n2t.net.  It is based on
-   a plain text file database containing explanatory comments, so it can
-   also be directly inspected by users, for example, to manually find a
-   Resolver Service.  N2T is a reliable, low-cost Resolver Service
-   supported by the ARK Alliance that primarily exists to support
-   actionable HTTP-based URLs for as long as HTTP is used.  One of its
-   big advantages over the other two methods and the URN, Handle, DOI,
-   and PURL methods, is that N2T can address the namespace splitting
-   problem because it has the option of storing redirection information
-   for individual identifiers rather than just at the name assigning
-   authority level.  When objects maintained by one NMA are inherited by
-   more than one successor NMA, this avoids requiring one of those
-   successors to maintain forwarding tables on behalf of the other
-   successors.
+   a plain text [NAANregistry] database containing explanatory comments,
+   so it can also be directly inspected by users, for example, to
+   manually find a Resolver Service.  N2T is a reliable, low-cost
+   Resolver Service supported by the ARK Alliance that primarily exists
+   to support actionable HTTP-based URLs for as long as HTTP is used.
+   One of its big advantages over the other two methods and the URN,
+   Handle, DOI, and PURL methods, is that N2T can address the namespace
+   splitting problem because it has the option of storing redirection
+   information for individual identifiers rather than just at the name
+   assigning authority level.  When objects maintained by one NMA are
+   inherited by more than one successor NMA, this avoids requiring one
+   of those successors to maintain forwarding tables on behalf of the
+   other successors.
 
    An appendix describes an historical way to discover an NMA based on a
    simplification of the URN resolver discovery method, itself very
@@ -2064,7 +2064,7 @@ Authors' Addresses
    Oakland, CA 94607
    United States of America
 
-   Email: jakkbl@gmail.com
+   Email: jak@ucop.edu
 
 
    Emmanuelle Bermès
